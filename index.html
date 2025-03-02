@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Button List Template</title>
+    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/186386383?v=4">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading-container">
+        <div class="container active">
+            <span class="overlay" id="percent">0%</span>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <h1>Games & Films</h1>
+        <div class="btn-container">
+            <div class="btn">
+                <a href="https://tblbz-my.sharepoint.com/:f:/g/personal/mlfourtosix_tblbz_onmicrosoft_com/Elh8VgXDtwdDhDl1S2hxy68BP-EVjjRhKSTvZv6WqMmh7Q"><span>Black OP</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://tblbz-my.sharepoint.com/personal/mlfourtosix_tblbz_onmicrosoft_com/_layouts/15/download.aspx?share=EYBFwAk1iCFHg4hKBbDVTiQBp65ulcugI-BlnbRwHD93EQ"><span>S.Z.</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://tblbz-my.sharepoint.com/:f:/g/personal/mlonetothree_tblbz_onmicrosoft_com/EmxetHAs6m9AsLU-jVCU6PQB7HijWp97TVJ3DfBL86vO_g"><span>God Father</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://tblbz-my.sharepoint.com/:f:/g/personal/mlonetothree_tblbz_onmicrosoft_com/EoG5HvHuP5VOtPkOOOD9dP0BNDYmLxgDDcizS-iVerZ1vQ"><span>Dark Souls</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://drive.google.com/file/d/10nmkDwNjy32NPqpdA0LbMeJsVs01qBOn/view?usp=sharing"><span>Blacklist Missing</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://cinescloud.cskinglk.xyz/server4/new/Kraven.The.Hunter.2024.WEBRip-%5BCineSubz.co%5D-480p?ext=mp4"><span>Kraven The Hunter</span></a>
+            </div>
+            <div class="btn">
+                <a href="https://tblbz-my.sharepoint.com/:f:/g/personal/mlfourtosix_tblbz_onmicrosoft_com/EpTtJMd2JNBJtS2k4dD1GEABRpbTOEmm8OE5zpruN4oeOA"><span>Battlefield 3</span></a>
+            </div>
+        </div>
+        <footer>
+            &copy; By Jithula Bhasitha
+        </footer>
+    </div>
+
+    <!-- JavaScript for loading animation and content transition -->
+    <script>
+        // Get references to the DOM elements we need to manipulate
+        const loadingContainer = document.querySelector(".loading-container");
+        const container = document.querySelector(".container");
+        const percent = document.querySelector("#percent");
+        const mainContent = document.querySelector(".main-content");
+        
+        // Initialize the percentage counter
+        let perVal = 0;
+        
+        // Set up the loading counter animation
+        // This increases the percentage counter by 1 every 100ms
+        let increment = setInterval(() => {
+            // Increment the counter value
+            perVal++;
+            
+            // Update the percentage text
+            percent.textContent = `${perVal}%`;
+            
+            // When we reach 100%, clear the interval and trigger the transition
+            if (perVal == 100) {
+                // Stop the counter
+                clearInterval(increment);
+                
+                // Short delay before transitioning to the main content
+                setTimeout(() => {
+                    // Hide the loading animation
+                    loadingContainer.classList.add("hidden");
+                    
+                    // Show the main content with a fade-in effect
+                    mainContent.classList.add("visible");
+                    
+                    // After the loading animation is completely gone, remove it from the DOM flow
+                    setTimeout(() => {
+                        loadingContainer.style.display = "none";
+                    }, 500);
+                }, 500);
+            }
+        }, 30); // Adjusted to 30ms for a faster loading experience (about 3 seconds total)
+    </script>
+</body>
+</html>
