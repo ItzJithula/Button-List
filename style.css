@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Reset for consistent rendering across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main page layout with flexbox for responsiveness */
+html, body {
+  min-height: 100vh;
+  background-color: #131221;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Loading container styling */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background-color: #131221;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Hide loading container when loaded */
+.loading-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Inner container for the loading animation */
+.container {
+  position: relative;
+  height: 450px;
+  width: 350px;
+  border-radius: 16px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active state for the loading container */
+.container.active {
+  background-color: #000;
+}
+
+/* Rotating gradient border effect */
+.container::before {
+  content: "";
+  position: absolute;
+  height: 650px;
+  width: 650px;
+  background-image: conic-gradient(transparent, transparent, transparent, #fff);
+}
+
+/* Animation for the rotating border */
+.container.active::before {
+  animation: rotate 4s linear infinite;
+}
+
+/* Keyframes for the rotation animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Overlay for the percentage counter */
+.container .overlay {
+  position: absolute;
+  height: 440px;
+  width: 340px;
+  font-size: 40px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 12px;
+  background-color: #131221;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main content container that appears after loading */
+.main-content {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Show main content when loaded */
+.main-content.visible {
+  display: flex;
+  opacity: 1;
+}
+
+/* Page title styling */
+h1 {
+  color: #f5f5f5;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Container for button grid with responsive layout */
+.btn-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Button styling with gradient border effect */
+.btn a {
+  position: relative;
+  color: #f5f5f5;
+  height: 70px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+  transition: transform 0.3s ease;
+}
+
+/* Hover animation with rotating hue effect */
+.btn a:hover {
+  animation: rotate-hue 0.4s linear infinite;
+  transform: scale(1.05);
+}
+
+/* Keyframes for the hue rotation effect */
+@keyframes rotate-hue {
+  100% {
+    filter: hue-rotate(-360deg);
+  }
+}
+
+/* Inner button styling for text container */
+.btn a span {
+  height: 88%;
+  width: 96%;
+  background: #1e1c2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 6px;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s ease;
+}
+
+/* Additional hover effect for inner span */
+.btn a:hover span {
+  background: #2a2741;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  color: #555;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .btn a span {
+    font-size: 16px;
+  }
+  
+  .container {
+    height: 350px;
+    width: 280px;
+  }
+  
+  .container .overlay {
+    height: 340px;
+    width: 270px;
+    font-size: 32px;
+  }
+}
